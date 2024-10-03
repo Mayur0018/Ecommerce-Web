@@ -1,0 +1,54 @@
+import { CiSearch } from "react-icons/ci";
+import { FaRegHeart } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { MdOutlineSegment } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+export default function Header() {
+  const [visible, setunvisible] = useState(false);
+
+  const togleMenu = () => {
+    setunvisible(!visible);
+  };
+  return (
+    <header className="mb-10">
+      <div className="flex">
+        <MdOutlineSegment
+          className="text-4xl font-bold sm:hidden mt-4"
+          onClick={togleMenu}
+        />
+        <h1 className=" text-3xl font-bold mt-4 sm:relative sm:top-6 sm:left-4 xl:text-4xl">
+          Exclusive
+        </h1>
+        <div className="flex mt-6  ml-20  sm:relative sm:left-[430px] sm:top-8 md:ml-32 lg:relative lg:left-[580px] xl:left-[910px] 2xl:left-[920px]">
+          <CiSearch className=" lg:text-3xl text-3xl" />
+          <Link to="/whishList">
+            <FaRegHeart className="ml-6 lg:text-3xl text-3xl" />
+          </Link>
+          <Link to="/cart">
+            <AiOutlineShoppingCart className="ml-6 lg:text-3xl text-3xl" />
+          </Link>
+        </div>
+      </div>
+      <ul
+        className={`w-[330px] ml-8  font-sm sm:font-normal sm:w-full  justify-center gap-10 sm:bg-transparent py-2 sm:py-0 rounded-lg fixed bottom-10  sm:top-14 sm:sticky bg-customRed bg-opacity-85 text-customBlack flex sm:flex  sm:justify-center sm:ml-6 ${
+          visible ? "block" : "hidden"
+        }`}
+      >
+        <Link to="/">
+          <li className="sm:mr-10 font-bold sm:font-normal">Home</li>
+        </Link>
+        <Link to="/Contact">
+          <li className=" sm:mr-10 font-bold sm:font-normal">Contact</li>
+        </Link>
+        <Link to="/about">
+          <li className="sm:mr-10 font-bold sm:font-normal">About</li>
+        </Link>
+        <Link to="/SignUp">
+          <li className="font-bold sm:font-normal">Sign Up</li>
+        </Link>
+      </ul>
+    </header>
+  );
+}
