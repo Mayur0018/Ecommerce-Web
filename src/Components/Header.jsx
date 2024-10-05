@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineSegment } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 export default function Header() {
   const [visible, setunvisible] = useState(false);
@@ -21,13 +22,16 @@ export default function Header() {
         <h1 className=" text-3xl font-bold mt-4 sm:relative sm:top-6 sm:left-4 xl:text-4xl">
           Exclusive
         </h1>
-        <div className="flex mt-6  ml-20  sm:relative sm:left-[430px] sm:top-8 md:ml-32 lg:relative lg:left-[580px] xl:left-[910px] 2xl:left-[920px]">
-          <CiSearch className=" lg:text-3xl text-3xl" />
+        <div className="flex mt-6  ml-10  sm:relative sm:left-[430px] sm:top-8 md:ml-32 lg:relative lg:left-[580px] xl:left-[910px] 2xl:left-[920px]">
+          <CiSearch className=" lg:text-3xl text-2xl" />
           <Link to="/whishList">
-            <FaRegHeart className="ml-6 lg:text-3xl text-3xl" />
+            <FaRegHeart className="ml-6 lg:text-3xl text-2xl" />
           </Link>
           <Link to="/cart">
-            <AiOutlineShoppingCart className="ml-6 lg:text-3xl text-3xl" />
+            <AiOutlineShoppingCart className="ml-6 lg:text-3xl text-2xl" />
+          </Link>
+          <Link>
+            <FaRegCircleUser className="ml-6 lg:text-3xl text-2 text-2xl" />
           </Link>
         </div>
       </div>

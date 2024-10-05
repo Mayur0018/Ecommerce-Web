@@ -1,7 +1,7 @@
-import cart1 from "../assets/cart5.png";
-import cart2 from "../assets/cart6.png";
-import cart3 from "../assets/cart7.png";
-import cart4 from "../assets/cart8.png";
+// import cart1 from "../assets/cart5.png";
+// import cart2 from "../assets/cart6.png";
+// import cart3 from "../assets/cart7.png";
+// import cart4 from "../assets/cart8.png";
 import { FaStar } from "react-icons/fa6";
 import { FaStarHalfStroke } from "react-icons/fa6";
 import { FaSquare } from "react-icons/fa";
@@ -10,39 +10,43 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/slices/CartSlice";
 import { removeToCart } from "../store/slices/CartSlice";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../context/DataContext";
 export default function BestSellingProducts() {
-  const Items = [
-    {
-      id: 14,
-      ProductImg: cart1,
-      ProductName: "The north coat",
-      ProductPrice: 123,
-    },
-    {
-      id: 15,
-      ProductImg: cart4,
-      ProductName: "Gucci duffle bag",
-      ProductPrice: 960,
-    },
-    {
-      id: 16,
-      ProductImg: cart3,
-      ProductName: "Small BookSelf",
-      ProductPrice: 370,
-    },
-    {
-      id: 17,
-      ProductImg: cart2,
-      ProductName: "RGB liquid CPU Cooler",
-      ProductPrice: 375,
-    },
-    {
-      id: 18,
-      ProductImg: cart1,
-      ProductName: "The north coat",
-      ProductPrice: 123,
-    },
-  ];
+  const { data2 } = useData();
+  console.log(data2);
+
+  // const Items = [
+  //   {
+  //     id: 14,
+  //     ProductImg: cart1,
+  //     ProductName: "The north coat",
+  //     ProductPrice: 123,
+  //   },
+  //   {
+  //     id: 15,
+  //     ProductImg: cart4,
+  //     ProductName: "Gucci duffle bag",
+  //     ProductPrice: 960,
+  //   },
+  //   {
+  //     id: 16,
+  //     ProductImg: cart3,
+  //     ProductName: "Small BookSelf",
+  //     ProductPrice: 370,
+  //   },
+  //   {
+  //     id: 17,
+  //     ProductImg: cart2,
+  //     ProductName: "RGB liquid CPU Cooler",
+  //     ProductPrice: 375,
+  //   },
+  //   {
+  //     id: 18,
+  //     ProductImg: cart1,
+  //     ProductName: "The north coat",
+  //     ProductPrice: 123,
+  //   },
+  // ];
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state);
 
@@ -67,12 +71,12 @@ export default function BestSellingProducts() {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid sm:grid-cols-3 sm:gap-6 sm:ml-24 md:ml-4 lg:grid lg:grid-cols-4 lg:gap lg:ml-10 lg:mr-0 xl:grid xl:grid-cols-5 xl:gap-0  mx-8">
-        {Items.map((ProductIteams) => (
+        {data2.map((ProductIteams) => (
           <div key={ProductIteams.id}>
             <img
-              src={ProductIteams.ProductImg}
+              src={ProductIteams.image}
               alt="cart1img"
-              className=" bg-gray-200 px-10 py-8 w-full lg:w-48"
+              className=" bg-gray-200 w-full lg:w-48"
               onClick={() => handleCartDetails(ProductIteams)}
             />
             {cart.some((item) => item.id === ProductIteams.id) ? (
@@ -110,7 +114,7 @@ export default function BestSellingProducts() {
                   : "Add To Cart"
               )}
             </button> */}
-            <p className="font-bold mt-3">{ProductIteams.ProductName}</p>
+            <p className="font-bold mt-3">{ProductIteams.name}</p>
             <p className="text-customRed font-bold">
               ${ProductIteams.ProductPrice}
             </p>

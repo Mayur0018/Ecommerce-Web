@@ -9,7 +9,7 @@ export default function CartItems() {
 
   useEffect(() => {
     if (cart.length) {
-      setTotalCart(cart.reduce((acc, curr) => acc + curr.ProductPrice, 0));
+      setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
     }
   }, [cart]);
 
@@ -27,8 +27,8 @@ export default function CartItems() {
                 <li key={product.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
-                      alt={product.ProductName}
-                      src={product.ProductImg}
+                      alt={product.title}
+                      src={product.images}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -36,8 +36,8 @@ export default function CartItems() {
                   <div className="ml-4 flex flex-1 flex-col">
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
-                        <h3>{product.ProductName}</h3>
-                        <p className="ml-4">${product.ProductPrice}</p>
+                        <h3>{product.title}</h3>
+                        <p className="ml-4">${product.price}</p>
                       </div>
                     </div>
                   </div>

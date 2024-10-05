@@ -6,6 +6,7 @@ import CartIteams from "./Pages/CartIteams";
 import Contact from "./Pages/Contact";
 import CartDetails from "./Pages/CartDetails";
 import WhishList from "./Pages/WhishList";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 export default function App() {
   return (
@@ -21,7 +22,9 @@ export default function App() {
           <Route path="/cartdetail/:id" element= {<CartDetails/>}></Route>
           <Route path="/whishList" element= {<WhishList/>}></Route>
         </Routes>
+
       </BrowserRouter>
+    
     </>
   );
 }

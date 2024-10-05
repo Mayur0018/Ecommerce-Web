@@ -14,58 +14,76 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/slices/CartSlice";
 import { removeToCart } from "../store/slices/CartSlice";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../context/DataContext";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
 export default function ExploreOurProducts() {
-  const Items = [
-    {
-      id: 6,
-      ProductImg: cart1,
-      ProductName: "Breed Dry Dog Food",
-      ProductPrice: 123,
-    },
-    {
-      id: 7,
-      ProductImg: cart4,
-      ProductName: "Quilted Satin Jacket",
-      ProductPrice: 960,
-    },
-    {
-      id: 8,
-      ProductImg: cart3,
-      ProductName: "ASUS FHD Gaming Laptop",
-      ProductPrice: 370,
-    },
-    {
-      id: 9,
-      ProductImg: cart2,
-      ProductName: "CANON EOS DSLR Camera ",
-      ProductPrice: 375,
-    },
-    {
-      id: 10,
-      ProductImg: cart5,
-      ProductName: "CANON EOS DSLR Camera ",
-      ProductPrice: 375,
-    },
-    {
-      id: 11,
-      ProductImg: cart6,
-      ProductName: "GP11 Shooter USB Gamepad ",
-      ProductPrice: 375,
-    },
-    {
-      id: 12,
-      ProductImg: cart7,
-      ProductName: "Jr. Zoom Soccer Cleats",
-      ProductPrice: 375,
-    },
-    {
-      id: 13,
-      ProductImg: cart8,
-      ProductName: "Kids Electric Car  ",
-      ProductPrice: 375,
-    },
-  ];
+  // const [Product, SetProduct] = useState([]);
+  // const Items = [
+  //   {
+  //     id: 6,
+  //     ProductImg: cart1,
+  //     ProductName: "Breed Dry Dog Food",
+  //     ProductPrice: 123,
+  //   },
+  //   {
+  //     id: 7,
+  //     ProductImg: cart4,
+  //     ProductName: "Quilted Satin Jacket",
+  //     ProductPrice: 960,
+  //   },
+  //   {
+  //     id: 8,
+  //     ProductImg: cart3,
+  //     ProductName: "ASUS FHD Gaming Laptop",
+  //     ProductPrice: 370,
+  //   },
+  //   {
+  //     id: 9,
+  //     ProductImg: cart2,
+  //     ProductName: "CANON EOS DSLR Camera ",
+  //     ProductPrice: 375,
+  //   },
+  //   {
+  //     id: 10,
+  //     ProductImg: cart5,
+  //     ProductName: "CANON EOS DSLR Camera ",
+  //     ProductPrice: 375,
+  //   },
+  //   {
+  //     id: 11,
+  //     ProductImg: cart6,
+  //     ProductName: "GP11 Shooter USB Gamepad ",
+  //     ProductPrice: 375,
+  //   },
+  //   {
+  //     id: 12,
+  //     ProductImg: cart7,
+  //     ProductName: "Jr. Zoom Soccer Cleats",
+  //     ProductPrice: 375,
+  //   },
+  //   {
+  //     id: 13,
+  //     ProductImg: cart8,
+  //     ProductName: "Kids Electric Car  ",
+  //     ProductPrice: 375,
+  //   },
+  // ];
+  // useEffect(() => {
+  //   axios
+  //     .get("https://api.escuelajs.co/api/v1/products")
+  //     .then((response) => {
+  //       SetProduct(response.data.slice(25, 35));
+  //     })
+  //     .catch((err) => {
+  //       console.log("Data Not Fetched0", err);
+  //     });
+  //   console.log(Product);
+  // }, []);
+ 
+  const {Products} = useData();
 
+  
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state);
 
@@ -81,6 +99,7 @@ export default function ExploreOurProducts() {
   const handlCartDetails = (ProductIteams) => {
     Navigate(`cartdetail/${ProductIteams.id}`, { state: ProductIteams });
   };
+
   return (
     <section className="ml-2 mr-1 mt-10">
       <div className="flex">
@@ -93,12 +112,12 @@ export default function ExploreOurProducts() {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid sm:grid-cols-3 sm:gap-6 sm:ml-24 md:ml-4 lg:grid lg:grid-cols-4 lg:gap lg:ml-10 lg:mr-0 xl:grid xl:grid-cols-5 xl:gap-0  mx-8">
-        {Items.map((ProductIteams) => (
+        {Products.map((ProductIteams) => (
           <div key={ProductIteams.id}>
             <img
-              src={ProductIteams.ProductImg}
+              src={ProductIteams.images[0]}
               alt="cart1img"
-              className=" bg-gray-200 px-10 py-8 w-full lg:w-48"
+              className=" bg-gray-200 w-full lg:w-48"
               onClick={() => handlCartDetails(ProductIteams)}
             />
             {cart.some((item) => item.id === ProductIteams.id) ? (
@@ -136,10 +155,8 @@ export default function ExploreOurProducts() {
                   : "Add To Cart"
               )}
             </button> */}
-            <p className="font-bold mt-3">{ProductIteams.ProductName}</p>
-            <p className="text-customRed font-bold">
-              ${ProductIteams.ProductPrice}
-            </p>
+            <p className="font-bold mt-3">{ProductIteams.title}</p>
+            <p className="text-customRed font-bold">${ProductIteams.price}</p>
             <div className="flex">
               <FaStar className=" text-customYellow" />
               <FaStar className=" text-customYellow" />

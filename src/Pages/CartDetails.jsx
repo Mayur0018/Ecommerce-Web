@@ -15,7 +15,7 @@ export default function CartDetails() {
     dispatch(addToCart(productDetails));
     Navigate("/cart");
   };
-  
+
   return (
     <section>
       <Header />
@@ -26,7 +26,7 @@ export default function CartDetails() {
               <div className="ml-20 mb-5">
                 <img
                   className="w-44  h-full sm:h-64 sm:w-64 object-cover"
-                  src={productDetails.ProductImg}
+                  src={productDetails.images}
                   alt="Product Image"
                 />
               </div>
@@ -48,7 +48,7 @@ export default function CartDetails() {
             </div>
             <div className="md:flex-1 px-4">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                {productDetails.ProductName}
+                {productDetails.title}
               </h2>
               <p className="text-gray-600  text-sm mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
@@ -57,26 +57,16 @@ export default function CartDetails() {
               </p>
               <div className="flex mb-4">
                 <div className="mr-4">
-                  <span className="font-bold text-gray-700">
-                    Price:
-                  </span>
-                  <span className="text-gray-600">
-                    $29.99
-                  </span>
+                  <span className="font-bold text-gray-700">Price:</span>
+                  <span className="text-gray-600"> ${productDetails.price}</span>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-700">
-                    Availability:
-                  </span>
-                  <span className="text-gray-600">
-                    In Stock
-                  </span>
+                  <span className="font-bold text-gray-700">Availability:</span>
+                  <span className="text-gray-600">In Stock</span>
                 </div>
               </div>
               <div className="mb-4">
-                <span className="font-bold text-gray-700  ">
-                  Select Size:
-                </span>
+                <span className="font-bold text-gray-700  ">Select Size:</span>
                 <div className="flex items-center mt-2">
                   <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
                     S
