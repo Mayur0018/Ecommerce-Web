@@ -6,8 +6,8 @@ export default function Footer() {
   
   return (
     <>
-      <footer className="bg-customBlack">
-        <div className="grid grid-cols-2 ml-6  sm:grid sm:grid-cols-3 lg:ml-8 lg:grid-cols-4 xl:grid-cols-5">
+      <footer className="bg-customBlack" >
+        <div className="grid grid-cols-2 ml-6  sm:grid sm:grid-cols-3 lg:ml-8 lg:grid-cols-4 xl:grid-cols-5 overflow-x-hidden">
           <div className="mt-20">
             <h5 className="text-white text-1xl font-bold">Exclusive</h5>
             <p className="text-white font-bold mt-2">Subscribe</p>
@@ -17,7 +17,7 @@ export default function Footer() {
             <input
               type="text"
               placeholder="Enter Your Name"
-              className="bg-customBlack rounded-sm border font-normal text-[7px] mt-2"
+              className="bg-customBlack rounded-sm border font-normal text-[7px] mt-2 overflow-x-hidden"
             />
           </div>
           <div className="mt-20">
@@ -49,7 +49,7 @@ export default function Footer() {
               Save $3 with App New User Only
             </p>
             <div>
-              <img src={qrcode} alt="QR Code" className="w-1" />
+              <img src={qrcode} alt="QR Code" />
               <div className="mt-2 flex mb-5">
                 <img src={playstore} alt="Google Play" className="mr-2" />
                 <img src={appstore} alt="App Store" />

@@ -7,13 +7,17 @@ import { useState } from "react";
 
 export default function SignUp() {
   const [data , setData] = useState({
-    name: "",
-    number : "",
+    name : "",
+    emailOrPhone: "",
     password : "",
   });
 
   const handleStoreData = (e)=>{
-    setData(e.target.value)
+    const {name , value} = e.target
+    setData({
+      ...data,
+      [name]: value, 
+    })
   }
   return (
     <>
@@ -39,10 +43,10 @@ export default function SignUp() {
                 <form action="">
                   <div className="relative mt-6">
                     <input
-                      type="Name"
-                      name="Name"
+                      type="text"
+                      name="name"
                       id="Name"
-                      value={data}
+                      value={data.name}
                       placeholder="Name"
                       onChange={handleStoreData}
                       className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
@@ -56,10 +60,11 @@ export default function SignUp() {
                   </div>
                   <div className="relative mt-6">
                     <input
-                      type="number"
-                      name="Email or Phone Number"
+                      type="text"
+                      name="emailOrPhone"
                       id="Email or Phone Number"
-                      value={data}
+                      value={data.emailOrPhone}
+                      onChange={handleStoreData}
                       placeholder="Email or Phone Number"
                       className="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                      />
@@ -73,10 +78,11 @@ export default function SignUp() {
                   <div className="relative mt-6">
                     <input
                       type="password"
-                      name="Password"
+                      name="password"
                       id="Password"
-                      value={data}
+                      value={data.password}
                       placeholder="Password"
+                      onChange={handleStoreData}
                       className="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                     />
                     <label

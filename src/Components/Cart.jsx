@@ -1,9 +1,9 @@
-import cart1 from "../assets/cart1.png";
-import cart2 from "../assets/cart2.png";
-import cart3 from "../assets/cart3.png";
-import cart4 from "../assets/cart4.png";
+// import cart1 from "../assets/cart1.png";
+// import cart2 from "../assets/cart2.png";
+// import cart3 from "../assets/cart3.png";
+// import cart4 from "../assets/cart4.png";
 import { FaLeaf, FaStar } from "react-icons/fa6";
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import { FaStarHalfStroke } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,8 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useData } from "../context/DataContext";
 export default function Cart() {
-
-  const {faleshSales} = useData();
+  const { faleshSales } = useData();
   // const Items = [
   //   {
   //     id: 1,
@@ -53,13 +52,13 @@ export default function Cart() {
   const [showPopUp, SetShowPopUp] = useState(false);
   const [popUpMessage, SetPopupMessage] = useState("");
   function handleAddToCart(item) {
-    SetPopupMessage(`${item.ProductName} added To Cart!`);
+    SetPopupMessage(`${item.title} added To Cart!`);
     SetShowPopUp(true);
     dispatch(addToCart(item));
     setTimeout(() => SetShowPopUp(false), 3000);
   }
   function handleRemoveCart(item) {
-    SetPopupMessage(`${item.ProductName} Remove To Cart!`);
+    SetPopupMessage(`${item.title} Remove To Cart!`);
     SetShowPopUp(true);
     dispatch(removeToCart(item));
     setTimeout(() => SetShowPopUp(false), 3000);
@@ -70,10 +69,10 @@ export default function Cart() {
   const handleDetails = (ProductIteams) => {
     Navigate(`/cartdetail/${ProductIteams.id}`, { state: ProductIteams });
   };
-
+  
   return (
     <section>
-      <div className="grid grid-cols-2 gap-2 sm:grid sm:grid-cols-3 sm:gap-6 sm:ml-24 md:ml-4 lg:grid lg:grid-cols-4 lg:gap lg:ml-10 lg:mr-0 xl:grid xl:grid-cols-5 xl:gap-0 mx-8">
+      <div className="grid grid-cols-2 gap-2 sm:grid sm:grid-cols-3 sm:gap-6 sm:ml-24 md:ml-4 lg:grid lg:grid-cols-4 lg:gap lg:ml-10 lg:mr-0 xl:grid xl:grid-cols-6 xl:gap-0 mx-8">
         {faleshSales.map((ProductIteams) => (
           <div key={ProductIteams.id}>
             <img
@@ -118,9 +117,7 @@ export default function Cart() {
                 )}
               </button> */}
             <p className="font-bold mt-3">{ProductIteams.title}</p>
-            <p className="text-customRed font-bold">
-              ${ProductIteams.price}
-            </p>
+            <p className="text-customRed font-bold">${ProductIteams.price}</p>
             <div className="flex">
               <FaStar className=" text-customYellow" />
               <FaStar className=" text-customYellow" />
