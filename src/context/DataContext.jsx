@@ -20,9 +20,9 @@ export const DataProvider = ({ children }) => {
         axios.get("https://api.escuelajs.co/api/v1/categories"),
         axios.get("https://api.escuelajs.co/api/v1/products"),
       ]);
-      setProductData(reponse1.data);
-      setData2(reponse2.data);
-      SetFleshSales(reponse3.data);
+      setProductData(reponse1.data.slice(1,10));
+      setData2(reponse2.data.slice(10,20));
+      SetFleshSales(reponse3.data.slice(10,20));
     } catch (err) {
       setError(err.message);
     } finally {
