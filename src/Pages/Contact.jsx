@@ -109,7 +109,7 @@ export default function Contact() {
                     className="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 outline-none"
                     required
                   />
-                </div>
+                </div>  
 
                 <div className="relative flex items-center">
                   <input

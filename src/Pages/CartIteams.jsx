@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
 import {
   incrementIteamQunity,
   decrementItemQuantity,
@@ -13,12 +14,42 @@ export default function CartItems() {
 
   useEffect(() => {
     if (cart.length) {
-      setTotalCart(cart.reduce((acc, curr) => acc + curr.price*curr.quantity, 0));
+      setTotalCart(
+        cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
+      );
     }
   }, [cart]);
 
   console.log(cart, totalCart);
   const dispatch = useDispatch();
+
+  const makePayment = async () => {
+    const stripe = await loadStripe(
+      "pk_test_51Pb06dK34Ud4xF07VVRmQtWJ3JmbPX9e1jtIEox6jbuFgYVmRJLa0lyBlSPMXZdEevLhfD4KgDkkPEzCaEs6Zgfm009GIZ7OUs"
+    );
+
+    const body = {
+      products: cart,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    const response = await fetch(`${"http://localhost:5000"}/create-checkout-session`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    });
+
+    const session = await response.json();
+    const result = stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      console.log("result.error");
+    }
+  };
   return (
     <>
       <Header />
@@ -73,8 +104,11 @@ export default function CartItems() {
             </div>
             <div className="mt-6">
               <Link to="/">
-                <button className="w-full bg-customRed text-white py-3 rounded-sm text-sm">
-                  Continue Shopping
+                <button
+                  className="w-full bg-customRed text-white py-3 rounded-sm text-sm"
+                  onClick={makePayment}
+                >
+                  Make Payment
                 </button>
               </Link>
             </div>

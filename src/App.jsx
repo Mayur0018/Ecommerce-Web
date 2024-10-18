@@ -6,7 +6,7 @@ import CartIteams from "./Pages/CartIteams";
 import Contact from "./Pages/Contact";
 import CartDetails from "./Pages/CartDetails";
 import WhishList from "./Pages/WhishList";
-
+import Success from "./Pages/SuccessPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 export default function App() {
   return (
@@ -21,6 +21,7 @@ export default function App() {
           <Route path="/Contact" element= {<Contact/>}></Route>
           <Route path="/cartdetail/:id" element= {<CartDetails/>}></Route>
           <Route path="/whishList" element= {<WhishList/>}></Route>
+          <Route path="/Success" element={<Success/>}></Route>
         </Routes>
 
       </BrowserRouter>
