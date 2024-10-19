@@ -107,7 +107,7 @@ export default function Cart() {
                 onClick={() =>
                   cart.some((item) => item.id === ProductIteams.id)
                     ? handleRemoveCart(ProductIteams.id)
-                    : handleAddToCart(ProductIteams)
+                    : handleAddToCart(`ProductIteams`)
                 }
               >
                 {cart.some((item) =>

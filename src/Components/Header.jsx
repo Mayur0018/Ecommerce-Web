@@ -5,8 +5,9 @@ import { MdOutlineSegment } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
-
+import { useSelector } from "react-redux";
 export default function Header() {
+  const cartIteamsCount = useSelector((state) => state.cart.length);
   const [visible, setunvisible] = useState(false);
 
   const togleMenu = () => {
@@ -28,7 +29,14 @@ export default function Header() {
             <FaRegHeart className="ml-6 lg:text-3xl text-2xl" />
           </Link>
           <Link to="/cart">
-            <AiOutlineShoppingCart className="ml-6 lg:text-3xl text-2xl" />
+            <div className=" relative">
+              <AiOutlineShoppingCart className="ml-6 lg:text-3xl text-2xl" />
+              {cartIteamsCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartIteamsCount}
+                </span>
+              )}
+            </div>
           </Link>
           <Link>
             <FaRegCircleUser className="ml-6 lg:text-3xl text-2 text-2xl" />
