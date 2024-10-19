@@ -21,7 +21,7 @@ export default function Header() {
           onClick={togleMenu}
         />
         <h1 className=" text-3xl font-bold mt-4 sm:relative sm:top-6 sm:left-4 xl:text-4xl">
-          Kavya Stores
+          Exclusive
         </h1>
         <div className="flex mt-6  ml-10  sm:relative sm:left-[430px] sm:top-8 md:ml-32 lg:relative lg:left-[580px] xl:left-[910px] 2xl:left-[920px]">
           <CiSearch className=" lg:text-3xl text-2xl" />
