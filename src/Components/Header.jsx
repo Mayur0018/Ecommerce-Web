@@ -9,10 +9,14 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const cartIteamsCount = useSelector((state) => state.cart.length);
   const [visible, setunvisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const togleMenu = () => {
     setunvisible(!visible);
   };
+  const handlesearch = (e) =>{
+    setSearchTerm(e.target.value)
+  }
   return (
     <header className="mb-10">
       <div className="flex">
@@ -20,10 +24,17 @@ export default function Header() {
           className="text-4xl font-bold sm:hidden mt-4"
           onClick={togleMenu}
         />
-        <h1 className=" text-3xl font-bold mt-4 sm:relative sm:top-6 sm:left-4 xl:text-4xl">
+        <h1 className=" text-3xl font-bold mt-4 sm:relative sm:top-6 sm:left-4 xl:text-3xl">
           Exclusive
         </h1>
-        <div className="flex mt-6  ml-10  sm:relative sm:left-[430px] sm:top-8 md:ml-32 lg:relative lg:left-[580px] xl:left-[910px] 2xl:left-[920px]">
+        <div className="flex mt-6  ml-10  sm:relative sm:left-[430px] sm:top-8 md:ml-32 lg:relative lg:left-[580px] xl:left-[760px] 2xl:left-[920px]">
+        <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handlesearch}
+            className="border rounded invisible xl:visible xl:px-5"
+          />
           <CiSearch className=" lg:text-3xl text-2xl" />
           <Link to="/whishList">
             <FaRegHeart className="ml-6 lg:text-3xl text-2xl" />
